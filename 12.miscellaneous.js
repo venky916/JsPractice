@@ -51,7 +51,7 @@ const output2 = users.reduce((acc, curr) => {}, {});
 
 const otp2 = users.filter((x) => x.age < 30).map((x) => x.firstName);
 
-console.log(Array(4).fill(0))
+console.log(Array(4).fill(0));
 
 var arr = Array(4)
   .fill(null)
@@ -66,3 +66,53 @@ console.log(arr);
 
 arr = Array.from({ length: 4 }).map((u, i) => i);
 console.log(arr);
+
+// Simple number sort
+const nums = [3, 1, 4, 1, 5];
+nums.sort((a, b) => {
+  if (a < b) return -1; // a comes first
+  if (a > b) return 1; // b comes first
+  return 0; // they're equal
+});
+console.log(nums); // [1, 1, 3, 4, 5]
+
+// Same logic, shorter
+nums.sort((a, b) => a - b); // Ascending
+nums.sort((a, b) => b - a); // Descending
+
+// Sort array of objects by a property
+const users1 = [
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 },
+  { name: "Charlie", age: 35 },
+];
+
+users1.sort((a, b) => {
+  if (a.age < b.age) return -1;
+  if (a.age > b.age) return 1;
+  return 0;
+});
+// Result: [Bob(25), Alice(30), Charlie(35)]
+const users2 = [
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 },
+];
+sortBy(users2, "age", "asc");
+
+function sortBy(arr, key, order = "asc") {
+  return [...arr].sort((a, b) => {
+    const aVal = a[key]; // Get property value from a
+    const bVal = b[key]; // Get property value from b
+
+    if (aVal < bVal) return order === "asc" ? -1 : 1; // If ascending: -1, if descending: 1
+    if (aVal > bVal) return order === "asc" ? 1 : -1; // If ascending: 1, if descending: -1
+
+    return 0; // Equal values
+  });
+}
+
+// Step 1: Compare Alice(30) vs Bob(25)
+// aVal = 30, bVal = 25
+// 30 > 25? YES → return 1 (Bob comes first)
+
+// Result: [Bob(25), Alice(30)] ✓

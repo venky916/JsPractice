@@ -17,6 +17,13 @@ An array is an ordered collection of values. Each value is called an element, an
 - `split()` : returns an array of strings by splits a string into an array based on a specified delimiter.
 - `join()`
 
+✅ find() / findIndex() - Finding elements
+✅ includes() - Checking existence
+✅ some() / every() - Testing conditions
+✅ sort() - Sorting arrays
+✅ fill() / Array.from() - Creating arrays (especially for DP!)
+✅ flat() - For nested array problems
+
 string.split(separator, limit);
 separator (optional) → The character or pattern to split by.
 limit (optional) → The maximum number of splits.

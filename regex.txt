@@ -1,0 +1,58 @@
+/i -> case-insensitive matching
+/m -> multiline 
+^ and $ match line starts/ends
+
+\d -> any digit (0-9)
+\D -> Non-Digit
+\w -> Word character (a-z, A-Z, 0-9,_)
+\W ->NON-word character(space, !)
+\s -> whitespace(space, tab, newline)
+\S -> Non-Whitespace
+. -> Any character except newline
+
+* -> 0 or more times
++ -> 1 or more times
+? -> 0 or 1 time (optional)
+{n} -> Exactly n times \d{3}
+{n,} -> n or more times \d{2,}
+{n,m} -> Between n and m times \d{2,4}
+
+^ -> Start of string eg: ^Hello→ Hello at beginning only
+$ -> End of string eg: end$→ end at the end only
+\b -> Word boundary Eg: \bcat\b→ 'cat' but not 'category'
+\B -> NOT word boundary Eg: \Bcat\B→ 'cat' in 'concatenate'
+
+() -> Capture group eg: (\d{3})-(\d{4}) → captures phone parts
+| -> OR operator eg:cat|dog  → either 'cat' or 'dog'
+(?:) -> Non-capturing group eg: (?:jpg|png)→ jpg or png, no capture
+
+## Common Real-World Patterns
+
+1 [a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,} -> test@email.com→ email addresses
+2 \d{3}-\d{3}-\d{4} usa, (?:\+|0{0,2})91[\s\-]?)?[6789]\d{9}$ india format
+3  https?::\\[\w.-]+ -> eg: https://example.com→ web URLs
+4 ^(?=.*[A-Z])(?=.*[0-9]).{8,}$ ->eg: Strong123→ min 8 chars, 1 uppercase, 1 digit
+5 #[0-9A-Fa-f]{6} -> eg:#FF5733→ hex color codes
+6 ^[a-zA-Z0-9_]{3,16}$ ->eg:user_name123→ 3-16 alphanumeric+underscore
+
+how to use ?
+1 .test(str) -> Returns true/false
+if (pattern.test(input))
+
+2 .match(pattern) -> Returns array or null
+str.match(/\d+/g)
+
+3 .replace(pattern, new) -> Replace matches
+str.replace(/\s/g, "")
+
+4 /g flag Global - find ALL
+/pattern/g
+
+5 /i flag ->Ignore case
+/pattern/i
+
+6 ^ symbol -> Start of string
+/^start/
+
+7 $ symbol ->End of string
+/end$/
